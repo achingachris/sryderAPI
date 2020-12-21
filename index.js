@@ -12,7 +12,7 @@ let phones = [
 
 // Create GET to return a list of all pies
 router.get('/', function (req, res, next) {
-  res.send(phones)
+  res.status(200).send(phones)
 })
 
 // Configure router so all routes are prefixed with /api/v1
