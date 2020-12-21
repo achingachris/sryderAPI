@@ -1,18 +1,26 @@
 // Bring in the express server and create application
 let express = require('express')
 let app = express()
+let pieRepo = require('./repo/pieRepo')
 
 // Use the express Router object
 let router = express.Router()
-let phones = [
-  { id: 1, name: 'iphone 12 mini' },
-  { id: 2, name: 'iphone 12' },
-  { id: 3, name: 'iphone 12 pro' },
-]
 
 // Create GET to return a list of all pies
 router.get('/', function (req, res, next) {
-  res.status(200).send(phones)
+  pieRepo.get(
+    function (data) {
+      res.status(200).json({
+        status: 200,
+        statusText: 'OK',
+        message: 'All Pies loaded',
+        data: data,
+      })
+    },
+    function (err) {
+      next(err)
+    }
+  )
 })
 
 // Configure router so all routes are prefixed with /api/v1
