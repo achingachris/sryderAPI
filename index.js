@@ -4,10 +4,15 @@ let app = express()
 
 // Use the express Router object
 let router = express.Router()
+let phones = [
+  { id: 1, name: 'iphone 12 mini' },
+  { id: 2, name: 'iphone 12' },
+  { id: 3, name: 'iphone 12 pro' },
+]
 
 // Create GET to return a list of all pies
 router.get('/', function (req, res, next) {
-  res.send('iPhone 12 Pro Max')
+  res.send(phones)
 })
 
 // Configure router so all routes are prefixed with /api/v1
